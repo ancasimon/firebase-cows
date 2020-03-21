@@ -1,0 +1,12 @@
+{
+	"firebaseKeys" : {
+    "apiKey": "AIzaSyAdSqDMrnzZd7RT3grQMkUhs_j_9qLMp3A",
+    "authDomain": "fir-cows.firebaseapp.com",
+    "databaseURL": "https://fir-cows.firebaseio.com",
+    "projectId": "fir-cows",
+    "storageBucket": "fir-cows.appspot.com",
+    "messagingSenderId": "502973779189",
+    "appId": "1:502973779189:web:01c437adcf508d7c5ec9bc",
+    "measurementId": "G-FGD3342S7X"
+  }
+}
