@@ -1,6 +1,6 @@
 const cowMaker = (cow) => {
   let domString = '';
-  domString += 'div class="col-3">';
+  domString += '<div class="col-3">';
   domString += '<div class="card">';
   domString += `<div class="card-header">${cow.name}</div>`;
   domString += '<div class="card-body">';
