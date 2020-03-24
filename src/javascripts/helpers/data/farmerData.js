@@ -7,7 +7,6 @@ const getFarmers = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/farmers.json`)
     .then((response) => {
       const exFarmers = response.data;
-      console.error(exFarmers);
       const farmers = [];
       Object.keys(exFarmers).forEach((farmerId) => {
         exFarmers[farmerId].id = farmerId;
