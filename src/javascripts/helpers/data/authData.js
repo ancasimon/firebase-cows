@@ -7,6 +7,7 @@ import pasture from '../../components/pasture/pasture';
 const authDiv = $('#auth');
 const pastureDiv = $('#pasture');
 const farmhouseDiv = $('#farmhouse');
+const singleFarmerDiv = $('#single-farmer');
 const logoutButton = $('#navbar-logout-button');
 
 
@@ -16,6 +17,7 @@ const checkLoginStatus = () => {
       // person is logged in
       authDiv.addClass('hide');
       pastureDiv.removeClass('hide');
+      singleFarmerDiv.removeClass('hide');
       farmhouseDiv.removeClass('hide');
       logoutButton.removeClass('hide');
       pasture.buildCows();
@@ -24,6 +26,7 @@ const checkLoginStatus = () => {
       // person is not logged in
       authDiv.removeClass('hide');
       pastureDiv.addClass('hide');
+      singleFarmerDiv.addClass('hide');
       farmhouseDiv.addClass('hide');
       logoutButton.addClass('hide');
     }
