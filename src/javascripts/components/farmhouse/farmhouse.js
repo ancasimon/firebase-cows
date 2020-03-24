@@ -3,7 +3,6 @@ import utils from '../../helpers/utils';
 import farmerComponent from '../farmer/farmer';
 
 const buildFarmers = () => {
-  console.error('you made farmers');
   farmerData.getFarmers()
     .then((farmers) => {
       let domString = '';
