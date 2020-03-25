@@ -9,10 +9,12 @@ const getCows = () => new Promise((resolve, reject) => {
       const demCows = response.data;
       console.error(demCows);
       const cows = [];
-      Object.keys(demCows).forEach((cowId) => {
-        demCows[cowId].id = cowId;
-        cows.push(demCows[cowId]);
-      });
+      if (demCows) {
+        Object.keys(demCows).forEach((cowId) => {
+          demCows[cowId].id = cowId;
+          cows.push(demCows[cowId]);
+        });
+      }
       resolve(cows);
     })
     .catch((err) => reject(err));
@@ -26,4 +28,7 @@ const getCows = () => new Promise((resolve, reject) => {
 // const getCows = () => axios.get(`${baseUrl}/cows.json`);
 // before we used to have return cows - but now we need to call the axios file
 
-export default { getCows };
+const deleteCow = (cowId) => axios.delete(`${baseUrl}/cows/${cowId}.json`);
+// delete method takes an axios call
+
+export default { getCows, deleteCow };
