@@ -30,4 +30,15 @@ const getSingleFarmerWithCows = (farmerId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getSingleFarmerWithCows };
+const completelyRemoveCow = (cowId) => new Promise((resolve, reject) => {
+  cowData.deleteCow(cowId)
+    .then(() => {
+      // what we need to do:
+      // 1. get all the farmerCows records by cowId
+      // 2. loop over all teh farmerCow reecord and delete the ones where the cowId is the same
+      resolve();
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getSingleFarmerWithCows, completelyRemoveCow };

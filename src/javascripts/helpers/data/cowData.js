@@ -26,4 +26,7 @@ const getCows = () => new Promise((resolve, reject) => {
 // const getCows = () => axios.get(`${baseUrl}/cows.json`);
 // before we used to have return cows - but now we need to call the axios file
 
+const deleteCow = (cowId) => axios.delete(`${baseUrl}/cows/${cowId}.json`);
+// delete method takes an axios call
+
 export default { getCows };
