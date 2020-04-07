@@ -22,6 +22,29 @@ const removeCow = (e) => {
     .catch((err) => console.error('could not delete cow', err));
 };
 
+const makeCow = (e) => {
+  e.preventDefault();
+  // make a new cow object
+  const newestCow = {
+    name: $('#cow-name').val(),
+    breed: $('#cow-breed').val(),
+    location: $('#cow-location').val(),
+    weight: $('cow-weight').val() * 1,
+    // uid: firebase.auth().currentUser.uid,
+  };
+  console.log('newCow', newestCow);
+  // save to Firebase
+  cowData.addCow(newestCow)
+  // .then((response) => console.log('response', response.data)) -- this is what you can use to se what's ocmeing back
+    .then(() => {
+      // reprint cows
+      // eslint-disable-next-line no-use-before-define
+      buildCows();
+      utils.printToDom('new-cow', '');
+    })
+    .catch((err) => console.error('could not add a new cow', err));
+};
+
 const buildCows = () => {
   cowData.getCows()
     .then((cows) => {
@@ -35,6 +58,7 @@ const buildCows = () => {
       domString += '</div>';
       utils.printToDom('pasture', domString);
       $('body').on('click', '.delete-cow', removeCow);
+      $('body').on('click', '#cow-create-button', makeCow);
       $('#show-add-cow-form').click(newCow.showForm);
     })
     .catch((err) => console.error('get cows broke', err));
