@@ -3,6 +3,7 @@ import smashData from '../../helpers/data/smash';
 import utils from '../../helpers/utils';
 import cowComponent from '../cow/cow';
 import newCow from '../newCow/newCow';
+import farmerCowData from '../../helpers/data/farmerCowData';
 
 // const buildCows = () => {
 //   cowData.getCows()
@@ -55,7 +56,15 @@ const farmerCowController = (e) => {
       cowId: e.target.closest('.card').id,
       farmerUid: e.target.dataset.farmerUid, // because we called this in the data-farmer-uid attribute we created
     };
-    console.log('newFarmerCow', newFarmerCow);
+    farmerCowData.addFarmerCow(newFarmerCow)
+      .then(() => {
+        // eslint-disable-next-line no-use-before-define
+        buildCows();
+        utils.printToDom('new-cow', '');
+        utils.printToDom('single-farmer', '');
+      })
+      .catch((err) => console.error('could not create farmer cow', err));
+    // console.log('newFarmerCow', newFarmerCow);
   } else {
     // delete a farmerCow
   }
