@@ -2,7 +2,7 @@ import cowData from '../../helpers/data/cowData';
 import smashData from '../../helpers/data/smash';
 import utils from '../../helpers/utils';
 import cowComponent from '../cow/cow';
-import newCow from '../newCow/newCow';
+import newCowComponent from '../newCow/newCow';
 import farmerCowData from '../../helpers/data/farmerCowData';
 
 // const buildCows = () => {
@@ -26,16 +26,16 @@ const removeCow = (e) => {
 const makeCow = (e) => {
   e.preventDefault();
   // make a new cow object
-  const newestCow = {
+  const newCow = {
     name: $('#cow-name').val(),
     breed: $('#cow-breed').val(),
     location: $('#cow-location').val(),
     weight: $('cow-weight').val() * 1,
     // uid: firebase.auth().currentUser.uid,
   };
-  console.log('newCow', newestCow);
+  console.log('newCow', newCow);
   // save to Firebase
-  cowData.addCow(newestCow)
+  cowData.addCow(newCow)
   // .then((response) => console.log('response', response.data)) -- this is what you can use to se what's ocmeing back
     .then(() => {
       // reprint cows
@@ -91,7 +91,7 @@ const buildCows = () => {
       });
       domString += '</div>';
       utils.printToDom('pasture', domString);
-      $('#show-add-cow-form').click(newCow.showForm);
+      $('#show-add-cow-form').click(newCowComponent.showForm);
     })
     .catch((err) => console.error('get cows broke', err));
 };
