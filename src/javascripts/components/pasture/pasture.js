@@ -45,6 +45,22 @@ const makeCow = (e) => {
     .catch((err) => console.error('could not add a new cow', err));
 };
 
+const farmerCowController = (e) => {
+  e.preventDefault();
+  console.log(e.target.dataset);
+  console.log(e.target.checked); // this allows you to find out if something is checked
+  if (e.target.checked) {
+    // create a new farmerCow - both of these pieces of data exist in the object - we have put hte cowId as the id of the card. and the farmer uid we can get from the array of farmers inside each card.
+    const newFarmerCow = {
+      cowId: e.target.closest('.card').id,
+      farmerUid: e.target.dataset.farmerUid, // because we called this in the data-farmer-uid attribute we created
+    };
+    console.log('newFarmerCow', newFarmerCow);
+  } else {
+    // delete a farmerCow
+  }
+};
+
 const buildCows = () => {
   smashData.getCowsWithOwners()
     .then((cows) => {
@@ -59,6 +75,7 @@ const buildCows = () => {
       utils.printToDom('pasture', domString);
       $('body').on('click', '.delete-cow', removeCow);
       $('body').on('click', '#cow-create-button', makeCow);
+      $('body').on('click', '.farmer-cow-checkbox', farmerCowController);
       $('#show-add-cow-form').click(newCow.showForm);
     })
     .catch((err) => console.error('get cows broke', err));
