@@ -75,9 +75,19 @@ const farmerCowController = (e) => {
         utils.printToDom('new-cow', '');
         utils.printToDom('single-farmer', '');
       })
-      .catch((err) => console.error('could not selete farmer cow', err));
+      .catch((err) => console.error('could not delete farmer cow', err));
   }
 };
+
+// to do to add owners to cows and ability to edit them:
+// 1. make smash function called getCowsWithOwners
+// 2. move cowData.getCows into that smash function - nothing should look different
+// 3. in smash function - getFarmerCows, getAllFarmers
+// 4. smash function to return an array of cow objects- each cow object should have an
+// array of farmers.  Each farmer should have a boolean isChecked (true if that farmer owns that cow)
+// 5.  modify domstring to show checkboxes
+// 6.  when a checkbox is checked - POST to farmerCows collection
+// 7.  when a checkbox is unchecked - DELETE to farmerCows collection
 
 const buildCows = () => {
   smashData.getCowsWithOwners()
