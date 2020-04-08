@@ -31,4 +31,7 @@ const getCows = () => new Promise((resolve, reject) => {
 const deleteCow = (cowId) => axios.delete(`${baseUrl}/cows/${cowId}.json`);
 // delete method takes an axios call
 
-export default { getCows, deleteCow };
+
+const addCow = (newestCow) => axios.post(`${baseUrl}/cows.json`, newestCow);
+
+export default { getCows, deleteCow, addCow };
