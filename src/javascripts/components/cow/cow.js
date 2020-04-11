@@ -17,7 +17,7 @@ const cowMaker = (cow) => {
   });
   domString += '</form>';
   domString += '<button class="btn btn-danger delete-cow"><i class="fas fa-trash"></i></button>';
-  domString += '<button class="btn btn-danger edit-cow">Edit</button>';
+  domString += '<button class="btn btn-warning edit-cow"><i class="fas fa-pencil-alt"></i></button>';
   domString += '</div>';
   domString += '</div>';
   domString += '</div>';

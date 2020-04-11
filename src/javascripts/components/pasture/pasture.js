@@ -27,8 +27,8 @@ const removeCow = (e) => {
 const editCowEvent = (e) => {
   e.preventDefault();
   const cowId = e.target.closest('.card').id;
-  console.log(cowId);
-  editCow.showForm();
+  console.log('cowId for the edit cow event', cowId);
+  editCow.showForm(cowId);
 };
 
 const makeCow = (e) => {
@@ -44,7 +44,7 @@ const makeCow = (e) => {
   console.log('newCow', newCow);
   // save to Firebase
   cowData.addCow(newCow)
-  // .then((response) => console.log('response', response.data)) -- this is what you can use to se what's ocmeing back
+  // .then((response) => console.log('response', response.data)) -- this is what you can use to se what's coming back
     .then(() => {
       // reprint cows
       // eslint-disable-next-line no-use-before-define
@@ -54,9 +54,12 @@ const makeCow = (e) => {
     .catch((err) => console.error('could not add a new cow', err));
 };
 
+
+// IMPORTANT: the modified object below MUST include all the properties the original object includes - if we leave out some properties, then the database will delete the properties not mentioned- this is true of all databases, not just Firebase!!!!
+// Because we are using a PUT axios call, we need to pass all the properties!!!!
 const modifyCow = (e) => {
   e.preventDefault();
-  const cowId = e.target.closest('edit-cow-form-tag'.id);
+  const cowId = e.target.closest('.edit-cow-form-tag').id;
   const modifiedCow = {
     name: $('#edit-cow-name').val(),
     breed: $('#edit-cow-breed').val(),
@@ -80,7 +83,7 @@ const farmerCowController = (e) => {
   console.log(e.target.dataset);
   console.log(e.target.checked); // this allows you to find out if something is checked
   if (e.target.checked) {
-    // create a new farmerCow - both of these pieces of data exist in the object - we have put hte cowId as the id of the card. and the farmer uid we can get from the array of farmers inside each card.
+    // create a new farmerCow - both of these pieces of data exist in the object - we have put the cowId as the id of the card. and the farmer uid we can get from the array of farmers inside each card.
     const newFarmerCow = {
       cowId: e.target.closest('.card').id,
       farmerUid: e.target.dataset.farmerUid, // because we called this in the data-farmer-uid attribute we created

@@ -1,7 +1,6 @@
 import utils from '../../helpers/utils';
 import cowData from '../../helpers/data/cowData';
 
-
 // Note: we do want the cow data to propopulate the fields ont he Edit form > so we will do a get axios call that gets a single cow  - we will add a new mehtiod to get a single cow by id int he cowData file
 
 const showForm = (cowId) => {
