@@ -4,6 +4,7 @@ import utils from '../../helpers/utils';
 import cowComponent from '../cow/cow';
 import newCowComponent from '../newCow/newCow';
 import farmerCowData from '../../helpers/data/farmerCowData';
+import editCow from '../editCow/editCow';
 
 // const buildCows = () => {
 //   cowData.getCows()
@@ -21,6 +22,11 @@ const removeCow = (e) => {
       utils.printToDom('single-farmer', '');
     })
     .catch((err) => console.error('could not delete cow', err));
+};
+
+const editCowEvent = (e) => {
+  e.preventDefault();
+  editCow.showForm();
 };
 
 const makeCow = (e) => {
@@ -110,6 +116,7 @@ const buildCows = () => {
 
 const pastureEvents = () => {
   $('body').on('click', '.delete-cow', removeCow);
+  $('body').on('click', '.edit-cow', editCowEvent);
   $('body').on('click', '#cow-create-button', makeCow);
   $('body').on('click', '.farmer-cow-checkbox', farmerCowController);
 };
